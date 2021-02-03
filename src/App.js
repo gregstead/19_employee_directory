@@ -1,9 +1,8 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Container from "./components/Container";
+import Table from "./components/Table";
 
 function App() {
-  return <Container />;
+  return <Table />;
 }
 
 export default App;
