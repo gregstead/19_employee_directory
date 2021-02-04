@@ -7,18 +7,33 @@ import Row from "../components/Row";
 
 class Page extends Component {
   state = {
-    employees: [],
+    search: "",
+    sortBy: "",
+    results: [],
   };
 
   componentDidMount() {
     this.getEmployees();
   }
 
+  handleInputChange = (event) => {
+    this.setState({ search: event.target.value });
+  };
+
+  handleFormSubmit = (event) => {
+    event.preventDefault();
+  };
+
+  handleSortClick = (event) => {
+    console.log("event.target.innerText :>> ", event.target.innerText);
+  };
+
   getEmployees = () => {
     API.getRandomEmployees()
       .then((res) => {
         this.setState({
-          employees: res.data.results,
+          search: "",
+          results: res.data.results,
         });
       })
       .catch((err) => console.log(err));
@@ -28,15 +43,15 @@ class Page extends Component {
     return (
       <div>
         {/* Title */}
-        <Container >
-        <Row>
-          <Col>
-          <Table employees={this.state.employees}/>
-          </Col>
-        </Row>
-
+        {/* Search form */}
+        {/* Sort by div */}
+        <Container>
+          <Row>
+            <Col>
+              <Table employees={this.state.results} handleSortClick={this.handleSortClick}/>
+            </Col>
+          </Row>
         </Container>
-       
       </div>
     );
   };

@@ -5,9 +5,9 @@ function Table(props) {
           <thead>
             <tr>
               <th scope="col"></th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Email</th>
+              <th scope="col" onClick={props.handleSortClick}>First</th>
+              <th scope="col" onClick={props.handleSortClick}>Last</th>
+              <th scope="col" onClick={props.handleSortClick}>Email</th>
             </tr>
           </thead>
           <tbody>
