@@ -25,7 +25,9 @@ class Page extends Component {
   };
 
   handleSortClick = (event) => {
-    console.log("event.target.innerText :>> ", event.target.innerText);
+    this.setState({
+      sortBy: event.target.innerText,
+    });
   };
 
   getEmployees = () => {
@@ -48,7 +50,11 @@ class Page extends Component {
         <Container>
           <Row>
             <Col>
-              <Table employees={this.state.results} handleSortClick={this.handleSortClick}/>
+              <Table
+                employees={this.state.results}
+                handleSortClick={this.handleSortClick}
+                sortBy={this.state.sortBy}
+              />
             </Col>
           </Row>
         </Container>

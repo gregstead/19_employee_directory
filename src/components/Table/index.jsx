@@ -1,4 +1,4 @@
-
+import Tbody from "../Tbody"
 function Table(props) {
     return(
         <table className="table">
@@ -10,16 +10,7 @@ function Table(props) {
               <th scope="col" onClick={props.handleSortClick}>Email</th>
             </tr>
           </thead>
-          <tbody>
-            {props.employees.map((employee) => (
-              <tr key={employee.email}>
-                <th scope="row"><img src={employee.picture.medium} alt={`${employee.name.first} ${employee.name.last}`}/></th>
-                <td>{employee.name.first}</td>
-                <td>{employee.name.last}</td>
-                <td>{employee.email}</td>
-              </tr>
-            ))}
-          </tbody>
+          <Tbody employees={props.employees} sortBy={props.sortby}/>
         </table>
     )
 }
