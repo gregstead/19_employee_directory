@@ -7,8 +7,6 @@ import Row from "../components/Row";
 
 class Page extends Component {
   state = {
-    search: "",
-    sortBy: "",
     results: [],
   };
 
@@ -25,9 +23,20 @@ class Page extends Component {
   };
 
   handleSortClick = (event) => {
+    const newResults = this.state.results;
+    const sorter = event.target.innerText;
     this.setState({
-      sortBy: event.target.innerText,
-    });
+      sortBy: sorter,
+      results: newResults.sort((a,b) => {
+        if (a.name.first > b.name.first) {
+          return 1
+        } else if (a.name.first < b.name.first) {
+          return -1
+        }
+        return 0;
+      })
+    })
+    console.log('this.state :>> ', this.state);
   };
 
   getEmployees = () => {
@@ -35,6 +44,7 @@ class Page extends Component {
       .then((res) => {
         this.setState({
           search: "",
+          sortBy: "",
           results: res.data.results,
         });
       })
@@ -53,7 +63,7 @@ class Page extends Component {
               <Table
                 employees={this.state.results}
                 handleSortClick={this.handleSortClick}
-                sortBy={this.state.sortBy}
+                sortBy={this.sortBy}
               />
             </Col>
           </Row>
