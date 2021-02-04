@@ -3,8 +3,7 @@ import API from "../../utils/api"
 
 class Table extends Component {
     state = {
-        image: "",
-        match: false
+        employees: []
     };
     
     componentDidMount() {
@@ -13,8 +12,8 @@ class Table extends Component {
 
     getEmployees = () => {
         API.getRandomEmployees().then(res => {
-            const employees = res.data.results;
-            console.log('employees :>> ', employees);
+            this.state.employees.push(res.data.results); 
+            console.log('this.state.employees :>> ', this.state.employees);
         })
     }
 
@@ -23,7 +22,7 @@ class Table extends Component {
             <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col"></th>
       <th scope="col">First</th>
       <th scope="col">Last</th>
       <th scope="col">Handle</th>
