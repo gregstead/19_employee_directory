@@ -22,29 +22,10 @@ class Page extends Component {
     event.preventDefault();
   };
 
-  handleSortClick = (event) => {
-    const newResults = this.state.results;
-    const sorter = event.target.innerText;
-    this.setState({
-      sortBy: sorter,
-      results: newResults.sort((a,b) => {
-        if (a.name.first > b.name.first) {
-          return 1
-        } else if (a.name.first < b.name.first) {
-          return -1
-        }
-        return 0;
-      })
-    })
-    console.log('this.state :>> ', this.state);
-  };
-
   getEmployees = () => {
     API.getRandomEmployees()
       .then((res) => {
         this.setState({
-          search: "",
-          sortBy: "",
           results: res.data.results,
         });
       })
@@ -62,8 +43,6 @@ class Page extends Component {
             <Col>
               <Table
                 employees={this.state.results}
-                handleSortClick={this.handleSortClick}
-                sortBy={this.sortBy}
               />
             </Col>
           </Row>
