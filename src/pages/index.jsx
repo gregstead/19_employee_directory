@@ -1,6 +1,9 @@
 import { Component } from "react";
 import API from "../utils/api";
-import Table from "../components/Table"
+import Table from "../components/Table";
+import Container from "../components/Container";
+import Col from "../components/Col";
+import Row from "../components/Row";
 
 class Page extends Component {
   state = {
@@ -25,10 +28,15 @@ class Page extends Component {
     return (
       <div>
         {/* Title */}
-        {/* Container */}
-        {/* Row */}
-        {/* Column */}
-        <Table employees={this.state.employees}/>
+        <Container >
+        <Row>
+          <Col>
+          <Table employees={this.state.employees}/>
+          </Col>
+        </Row>
+
+        </Container>
+       
       </div>
     );
   };
