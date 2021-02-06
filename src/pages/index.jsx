@@ -8,6 +8,7 @@ import Search from "../components/Search";
 
 class Page extends Component {
   state = {
+    search: "",
     results: [],
   };
 
@@ -16,11 +17,12 @@ class Page extends Component {
   }
 
   handleInputChange = (event) => {
-    this.setState({ search: event.target.value });
+    this.setState({ ...this.state, search: event.target.value });
   };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
+    console.log(event);
   };
 
   getEmployees = () => {
@@ -37,14 +39,18 @@ class Page extends Component {
     return (
       <div>
         {/* Title */}
-        <Search />
-        <Container>
-          <Row>
-            <Col>
-              <Table employees={this.state.results} />
-            </Col>
-          </Row>
-        </Container>
+        <Search
+          handleFormSubmit={this.handleFormSubmit}
+          handleInputChange={this.handleInputChange}
+        >
+          <Container>
+            <Row>
+              <Col>
+                <Table employees={this.state.results} />
+              </Col>
+            </Row>
+          </Container>
+        </Search>
       </div>
     );
   };

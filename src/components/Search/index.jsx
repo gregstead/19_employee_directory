@@ -2,10 +2,24 @@ import React from "react";
 
 function Search(props) {
   return (
-    <form action="">
-      <input type="text" name="searchField" id="" />
-      <button className="btn">Hello</button>
-    </form>
+    <div>
+      <form action="">
+        <input
+          type="text"
+          name="searchField"
+          value={props.search}
+          onChange={props.handleInputChange}
+        />
+        <button
+          onClick={() => props.handleFormSubmit()}
+          className="btn"
+          type="submit"
+        >
+          Search
+        </button>
+      </form>
+      {props.children}
+    </div>
   );
 }
 
