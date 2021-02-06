@@ -4,6 +4,7 @@ import Table from "../components/Table";
 import Container from "../components/Container";
 import Col from "../components/Col";
 import Row from "../components/Row";
+import Search from "../components/Search";
 
 class Page extends Component {
   state = {
@@ -36,14 +37,11 @@ class Page extends Component {
     return (
       <div>
         {/* Title */}
-        {/* Search form */}
-        {/* Sort by div */}
+        <Search />
         <Container>
           <Row>
             <Col>
-              <Table
-                employees={this.state.results}
-              />
+              <Table employees={this.state.results} />
             </Col>
           </Row>
         </Container>

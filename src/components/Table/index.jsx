@@ -38,27 +38,13 @@ function Table(props) {
         <tr>
           <th scope="col"></th>
           {/* Make table headings clickable and set sorter field */}
-          <th
-            scope="col"
-            onClick={() => setSortField("first") && console.log("first")}
-          >
+          <th scope="col" onClick={() => setSortField("first")}>
             First
           </th>
-          <th
-            scope="col"
-            onClick={() =>
-              setSortField("last") && console.log("this.state :>> ", this.state)
-            }
-          >
+          <th scope="col" onClick={() => setSortField("last")}>
             Last
           </th>
-          <th
-            scope="col"
-            onClick={() =>
-              setSortField("email") &&
-              console.log("this.state :>> ", this.state)
-            }
-          >
+          <th scope="col" onClick={() => setSortField("email")}>
             Email
           </th>
         </tr>
