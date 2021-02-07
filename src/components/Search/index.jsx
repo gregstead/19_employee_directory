@@ -3,7 +3,7 @@ import React from "react";
 function Search(props) {
   return (
     <div>
-      <form>
+      <form className="text-center p-3">
         <input
           type="text"
           value={props.search}
