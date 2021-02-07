@@ -3,17 +3,17 @@ import React from "react";
 function Search(props) {
   return (
     <div>
-      <form action="">
+      <form>
         <input
           type="text"
-          name="searchField"
           value={props.search}
           onChange={props.handleInputChange}
         />
         <button
-          onClick={() => props.handleFormSubmit()}
+          onClick={(e) => {
+            props.handleFormSubmit(e);
+          }}
           className="btn"
-          type="submit"
         >
           Search
         </button>

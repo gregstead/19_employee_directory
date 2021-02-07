@@ -3,6 +3,7 @@ import React from "react";
 function Table(props) {
   const { employees } = props;
   const [sortField, setSortField] = React.useState(null);
+
   let sortedEmployees = [...employees];
   // Sort employees
 

@@ -9,20 +9,36 @@ import Search from "../components/Search";
 class Page extends Component {
   state = {
     search: "",
+    filteredCache: [],
     results: [],
   };
 
+  // API call for employee generator
   componentDidMount() {
     this.getEmployees();
   }
 
   handleInputChange = (event) => {
-    this.setState({ ...this.state, search: event.target.value });
+    this.setState({
+      ...this.state,
+      search: event.target.value,
+    });
   };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log(event);
+    const filteredEmployees = this.state.results.filter((employee) => {
+      const firstName = employee.name.first.toLowerCase();
+      const lastName = employee.name.first.toLowerCase();
+      return (
+        firstName.includes(this.state.search.toLowerCase()) ||
+        lastName.includes(this.state.search.toLowerCase())
+      );
+    });
+    this.setState({
+      ...this.state,
+      filteredCache: filteredEmployees,
+    });
   };
 
   getEmployees = () => {
@@ -46,7 +62,13 @@ class Page extends Component {
           <Container>
             <Row>
               <Col>
-                <Table employees={this.state.results} />
+                <Table
+                  employees={
+                    this.state.filteredCache.length > 0
+                      ? this.state.filteredCache
+                      : this.state.results
+                  }
+                />
               </Col>
             </Row>
           </Container>
